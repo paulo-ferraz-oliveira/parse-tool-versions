@@ -1,0 +1,27 @@
+{
+  "description": "Parse .tool-versions into step outputs",
+  "devDependencies": {
+    "@actions/core": "1.10.0",
+    "eslint": "8.28.0",
+    "markdownlint-cli": "0.32.2",
+    "prettier": "2.8.0",
+    "@vercel/ncc": "0.34.0",
+    "yaml-lint": "1.7.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT",
+  "main": "index.mjs",
+  "name": "@paulo-ferraz-oliveira/parse-tool-versions",
+  "private": true,
+  "scripts": {
+    "build": "npm install && ncc build index.mjs --no-cache",
+    "dist": "npm run build && npm run prettier && npm run eslint && npm run markdownlint-cli && npm run yaml-lint && echo \"\nReady for submission!\"",
+    "eslint": "node_modules/.bin/eslint *.mjs src/**/*.mjs",
+    "markdownlint-cli": "node_modules/.bin/markdownlint -c .markdownlint-cli.yml .github/**/*.md *.md",
+    "prettier": "node_modules/.bin/prettier *.mjs src/**/*.mjs --write",
+    "test": "echo \"Functional tests will be performed on GitHub via this project's workflows!\" && exit 1",
+    "yaml-lint": "node_modules/.bin/yamllint -c .yaml-lint.yml .github/**/*.yml .*.yml *.yml"
+  }
+}

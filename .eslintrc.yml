@@ -1,0 +1,7 @@
+---
+parserOptions:
+  ecmaVersion: 2015
+  sourceType: module
+rules:
+  no-trailing-spaces: error
+  camelcase: error

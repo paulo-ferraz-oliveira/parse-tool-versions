@@ -1,0 +1,68 @@
+---
+name: Windows CI
+
+"on": push
+
+jobs:
+  windows-ci:
+    name: Windows CI
+
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - id: tool-versions
+        name: Parse .tool-versions
+        uses: ./
+
+      - name: Test for bash
+        shell: bash
+        run: |
+          RUBY=${{steps.tool-versions.outputs.ruby}}
+          NPM=${{steps.tool-versions.outputs.npm}}
+          PYTHON=${{steps.tool-versions.outputs.python}}
+          echo "${RUBY?output not set}"
+          echo "${NPM?output not set}"
+          echo "${PYTHON?output not set}"
+
+      - name: Test for pwsh
+        shell: pwsh
+        run: |
+          $Env:RUBY="${{steps.tool-versions.outputs.ruby}}"
+          $Env:NPM="${{steps.tool-versions.outputs.npm}}"
+          $Env:PYTHON="${{steps.tool-versions.outputs.python}}"
+          Test-Path $Env:RUBY
+          Test-Path $Env:NPM
+          Test-Path $Env:PYTHON
+
+      - name: Test for sh
+        shell: sh
+        run: |
+          RUBY=${{steps.tool-versions.outputs.ruby}}
+          NPM=${{steps.tool-versions.outputs.npm}}
+          PYTHON=${{steps.tool-versions.outputs.python}}
+          echo "${RUBY?output not set}"
+          echo "${NPM?output not set}"
+          echo "${PYTHON?output not set}"
+
+      - name: Test for cmd
+        shell: cmd
+        run: |
+          set RUBY=${{steps.tool-versions.outputs.ruby}}
+          set NPM=${{steps.tool-versions.outputs.npm}}
+          set PYTHON=${{steps.tool-versions.outputs.python}}
+          if "%RUBY%" == "" exit 1
+          if "%NPM%" == "" exit 1
+          if "%PYTHON%" == "" exit 1
+
+      - name: Test for powershell
+        shell: powershell
+        run: |
+          $Env:RUBY="${{steps.tool-versions.outputs.ruby}}"
+          $Env:NPM="${{steps.tool-versions.outputs.npm}}"
+          $Env:PYTHON="${{steps.tool-versions.outputs.python}}"
+          Test-Path $Env:RUBY
+          Test-Path $Env:NPM
+          Test-Path $Env:PYTHON
