@@ -3,12 +3,10 @@ author: Paulo F. Oliveira
 branding:
   color: blue
   icon: code
-description:
-  This GitHub action parses a `.tool-versions` file (as
-  [specified by `asdf`](https://asdf-vm.com/manage/configuration.html)), found at the root folder of
-  your GitHub repository, reads the versions declared therein and makes these available as
-  outputs from an identified step.
-name: parse-tool-versions
+description: >
+  Parse a `.tool-versions` file (as specified by `asdf`) and make tool/versions available as outputs
+  from an identified step.
+name: "@paulo-ferraz-oliveira/parse-tool-versions"
 runs:
   main: dist/index.mjs
   using: node16
