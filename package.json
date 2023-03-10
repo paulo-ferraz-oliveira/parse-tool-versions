@@ -23,5 +23,6 @@
     "prettier": "node_modules/.bin/prettier *.mjs src/**/*.mjs --write",
     "test": "echo \"Functional tests will be performed on GitHub via this project's workflows!\" && exit 1",
     "yaml-lint": "node_modules/.bin/yamllint -c .yaml-lint.yml .github/**/*.yml .*.yml *.yml"
-  }
+  },
+  "version": "v1.0.2"
 }
