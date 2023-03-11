@@ -19,9 +19,10 @@
     "build": "npm install && ncc build index.mjs --no-cache",
     "dist": "npm run build && npm run prettier && npm run eslint && npm run markdownlint-cli && npm run yaml-lint && echo \"\nReady for submission!\"",
     "eslint": "node_modules/.bin/eslint *.mjs src/**/*.mjs",
-    "markdownlint-cli": "node_modules/.bin/markdownlint -c .markdownlint-cli.yml .github/**/*.md *.md",
+    "markdownlint-cli": "node_modules/.bin/markdownlint -c .markdownlint-cli.yml .github/**/*.md .github/*.md *.md",
     "prettier": "node_modules/.bin/prettier *.mjs src/**/*.mjs --write",
     "test": "echo \"Functional tests will be performed on GitHub via this project's workflows!\" && exit 1",
     "yaml-lint": "node_modules/.bin/yamllint -c .yaml-lint.yml .github/**/*.yml .*.yml *.yml"
-  }
+  },
+  "version": "v1.0.2"
 }
