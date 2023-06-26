@@ -40,6 +40,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: paulo-ferraz-oliveira/parse-tool-versions@v1
         id: tool-versions
       - run: echo ${{steps.tool-versions.outputs.ruby}} # 2.5.3
