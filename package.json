@@ -1,15 +1,15 @@
 {
   "description": "Parse .tool-versions into step outputs",
   "devDependencies": {
-    "@actions/core": "1.10.0",
-    "eslint": "8.28.0",
-    "markdownlint-cli": "0.32.2",
-    "prettier": "2.8.0",
-    "@vercel/ncc": "0.34.0",
+    "@actions/core": "1.10.1",
+    "eslint": "9.2.0",
+    "markdownlint-cli": "0.40.0",
+    "prettier": "3.2.5",
+    "@vercel/ncc": "0.38.1",
     "yaml-lint": "1.7.0"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "license": "MIT",
   "main": "index.mjs",
@@ -24,5 +24,5 @@
     "test": "echo \"Functional tests will be performed on GitHub via this project's workflows!\" && exit 1",
     "yaml-lint": "node_modules/.bin/yamllint -c .yaml-lint.yml .github/**/*.yml .*.yml *.yml"
   },
-  "version": "v1.0.2"
+  "version": "v1.0.3"
 }
