@@ -7,11 +7,11 @@ jobs:
   ubuntu-ci:
     name: Ubuntu CI
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.6
 
       - id: tool-versions
         name: Parse .tool-versions
