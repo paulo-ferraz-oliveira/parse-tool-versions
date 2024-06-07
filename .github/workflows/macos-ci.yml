@@ -7,11 +7,11 @@ jobs:
   macos-ci:
     name: MacOS CI
 
-    runs-on: macos-latest
+    runs-on: macos-14
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.6
 
       - id: tool-versions
         name: Parse .tool-versions
