@@ -30,9 +30,11 @@ jobs:
           RUBY=${{steps.tool-versions.outputs.example-ruby}}
           NPM=${{steps.tool-versions.outputs.example-npm}}
           PYTHON=${{steps.tool-versions.outputs.example-python}}
+          NODEJS=${{steps.tool-versions.outputs.example-nodejs}}
           echo "${RUBY?output not set}"
           echo "${NPM?output not set}"
           echo "${PYTHON?output not set}"
+          echo "${NODEJS?output not set}"
 
       - name: Test for pwsh
         shell: pwsh
@@ -40,9 +42,11 @@ jobs:
           $Env:RUBY="${{steps.tool-versions.outputs.example-ruby}}"
           $Env:NPM="${{steps.tool-versions.outputs.example-npm}}"
           $Env:PYTHON="${{steps.tool-versions.outputs.example-python}}"
+          $Env:NODEJS="${{steps.tool-versions.outputs.example-nodejs}}"
           Test-Path $Env:RUBY
           Test-Path $Env:NPM
           Test-Path $Env:PYTHON
+          Test-Path $Env:NODEJS
 
       - name: Test for sh
         shell: sh
@@ -50,9 +54,11 @@ jobs:
           RUBY=${{steps.tool-versions.outputs.example-ruby}}
           NPM=${{steps.tool-versions.outputs.example-npm}}
           PYTHON=${{steps.tool-versions.outputs.example-python}}
+          NODEJS=${{steps.tool-versions.outputs.example-nodejs}}
           echo "${RUBY?output not set}"
           echo "${NPM?output not set}"
           echo "${PYTHON?output not set}"
+          echo "${NODEJS?output not set}"
 
       - name: Test for cmd
         shell: cmd
@@ -60,9 +66,11 @@ jobs:
           set RUBY=${{steps.tool-versions.outputs.example-ruby}}
           set NPM=${{steps.tool-versions.outputs.example-npm}}
           set PYTHON=${{steps.tool-versions.outputs.example-python}}
+          set NODEJS=${{steps.tool-versions.outputs.example-nodejs}}
           if "%RUBY%" == "" exit 1
           if "%NPM%" == "" exit 1
           if "%PYTHON%" == "" exit 1
+          if "%NODEJS%" == "" exit 1
 
       - name: Test for powershell
         shell: powershell
@@ -70,6 +78,8 @@ jobs:
           $Env:RUBY="${{steps.tool-versions.outputs.example-ruby}}"
           $Env:NPM="${{steps.tool-versions.outputs.example-npm}}"
           $Env:PYTHON="${{steps.tool-versions.outputs.example-python}}"
+          $Env:NODEJS="${{steps.tool-versions.outputs.example-nodejs}}"
           Test-Path $Env:RUBY
           Test-Path $Env:NPM
           Test-Path $Env:PYTHON
+          Test-Path $Env:NODEJS

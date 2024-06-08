@@ -2809,10 +2809,10 @@ function parse() {
   console.log(`File: ${dotToolVersionsPath}`);
   const versions = external_fs_.readFileSync(dotToolVersionsPath, 'utf8');
   versions.split('\n').forEach((line) => {
-    const appVersion = line.match(/^([^ #]+)[ ]+([^ #\r\n]+)/);
+    const appVersion = line.match(/^([^ #]+)[ ]+(ref:v?)?([^ #\r\n]+)/);
     if (appVersion) {
       const app = appVersion[1];
-      const [, , version] = appVersion;
+      const [, , , version] = appVersion;
       appVersions.set(app, version);
       console.log(`Consuming ${app} at version ${version}`);
     }
