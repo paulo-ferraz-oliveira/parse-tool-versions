@@ -30,9 +30,11 @@ jobs:
           RUBY=${{steps.tool-versions.outputs.example-ruby}}
           NPM=${{steps.tool-versions.outputs.example-npm}}
           PYTHON=${{steps.tool-versions.outputs.example-python}}
+          NODEJS=${{steps.tool-versions.outputs.example-nodejs}}
           echo "${RUBY?output not set}"
           echo "${NPM?output not set}"
           echo "${PYTHON?output not set}"
+          echo "${NODEJS?output not set}"
 
       - name: Test for pwsh
         shell: pwsh
@@ -40,9 +42,11 @@ jobs:
           $Env:RUBY="${{steps.tool-versions.outputs.example-ruby}}"
           $Env:NPM="${{steps.tool-versions.outputs.example-npm}}"
           $Env:PYTHON="${{steps.tool-versions.outputs.example-python}}"
+          $Env:NODEJS="${{steps.tool-versions.outputs.example-nodejs}}"
           Test-Path $Env:RUBY
           Test-Path $Env:NPM
           Test-Path $Env:PYTHON
+          Test-Path $Env:NODEJS
 
       - name: Test for sh
         shell: sh
@@ -50,6 +54,8 @@ jobs:
           RUBY=${{steps.tool-versions.outputs.example-ruby}}
           NPM=${{steps.tool-versions.outputs.example-npm}}
           PYTHON=${{steps.tool-versions.outputs.example-python}}
+          NODEJS=${{steps.tool-versions.outputs.example-nodejs}}
           echo "${RUBY?output not set}"
           echo "${NPM?output not set}"
           echo "${PYTHON?output not set}"
+          echo "${NODEJS?output not set}"

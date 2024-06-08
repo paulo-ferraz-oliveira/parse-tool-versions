@@ -3,3 +3,4 @@ example-ruby 2.5.3 # This is a comment
 # This is another comment
 example-npm 8.3.1
 example-python 3.7.2 2.7.15 system # Only 3.7.2 used
+example-nodejs ref:v3.22.0
