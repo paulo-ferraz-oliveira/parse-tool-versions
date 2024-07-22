@@ -20,10 +20,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
+      - name: Install Node.js
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
+        with:
+          node-version-file: .nvmrc
+
       - name: Create dist
-        run: |
-          npm install
-          npm run dist
+        run: npm run dist
 
       - name: Check if build left artifacts
         run: git diff --exit-code
+
+      # uses .markdownlint.yml for configuration
+      - name: markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
+        with:
+          globs: |
+            .github/**/*.md
+            *.md
+
+      - name: yamllint
+        uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c # v3.1.1
+        with:
+          file_or_dir: |
+            .github/**/*.yml
+            .*.yml
+          strict: true
+          config_file: .yamllint.yml
+
+      - name: actionlint
+        uses: reviewdog/action-actionlint@4f8f9963ca57a41e5fd5b538dd79dbfbd3e0b38a # v1.54.0
+        env:
+          SHELLCHECK_OPTS: -o all
