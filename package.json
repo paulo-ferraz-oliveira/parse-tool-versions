@@ -17,13 +17,13 @@
     "eslint-src": "eslint src/**/*.mjs",
     "eslint-js": "eslint eslint.config.js",
     "eslint-index": "eslint index.mjs",
-    "eslint": "npm run eslint-src && npm run eslint-js && npm run estlint-index",
+    "eslint": "npm run eslint-src && npm run eslint-js && npm run eslint-index",
     "prettier-src": "prettier src/**/*.mjs --write",
     "prettier-js": "prettier eslint.config.js",
     "prettier-index": "prettier index.mjs",
     "prettier": "npm run prettier-src && npm run prettier-js && npm run prettier-index",
     "format-lint": "npm run prettier && npm run eslint",
     "test": "echo \"Functional tests will be performed on GitHub via this project's workflows!\" && exit 1",
-    "dist": "npm install && npm build && npm run format-lint && echo \"\nReady for submission!\""
+    "dist": "npm install && npm run build && npm run format-lint && echo \"\nReady for submission!\""
   }
 }
