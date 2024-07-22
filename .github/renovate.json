@@ -1,7 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices"
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":pinDevDependencies",
+    ":pinDigestsDisabled"
   ],
   "packageRules": [
     {
@@ -25,6 +28,12 @@
       "groupName": "package.json + .nvmrc deps"
     },
     {
+      "matchFileNames": [
+        "Dockerfile"
+      ],
+      "groupName": "Docker deps"
+    },
+    {
       "matchPackagePrefixes": [
         "minimum_otp_vsn"
       ],
@@ -39,7 +48,7 @@
         ".github/.*/.*\\.yml"
       ],
       "matchStrings": [
-        "# renovate datasource: (?<datasource>[^,]+), depName: (?<depName>[^\\n]+)\\n.+?(?<currentValue>v?\\d+(\\.\\d+(\\.\\d+)?)?)\\n"
+        "# renovate datasource: (?<datasource>[^,]+), depName: (?<depName>[^\\n]+)\\n.+?(?<currentValue>v?\\d+(\\.\\d+(\\.\\d+)?)?(-[^\\n]+)?)\\n"
       ]
     },
     {
@@ -53,6 +62,17 @@
         "{(?<depName>[^,]+), \"(?<currentValue>\\d+\\.\\d+(\\.\\d+)?)\""
       ],
       "versioningTemplate": "semver"
+    },
+    {
+      "description": "Match versions (per datasource and depName) in Dockerfile",
+      "customType": "regex",
+      "fileMatch": [
+        "Dockerfile"
+      ],
+      "matchStrings": [
+        "# renovate datasource: (?<datasource>[^,]+), depName: (?<depName>[^\\n]+)\\nENV .+?_VERSION=\"(?<currentValue>[^\"]+)\""
+      ],
+      "versioningTemplate": "loose"
     }
   ]
 }
