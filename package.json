@@ -1,5 +1,9 @@
 {
-  "description": "Parse .tool-versions into step outputs",
+  "name": "@paulo-ferraz-oliveira/parse-tool-versions",
+  "description": "Parse .tool-versions into GitHub Actions steps' outputs",
+  "version": "v1.0.3",
+  "license": "MIT",
+  "main": "index.mjs",
   "devDependencies": {
     "@actions/core": "1.10.1",
     "eslint": "9.7.0",
@@ -8,21 +12,18 @@
     "@vercel/ncc": "0.38.1",
     "yaml-lint": "1.7.0"
   },
-  "engines": {
-    "node": ">=20"
-  },
-  "license": "MIT",
-  "main": "index.mjs",
-  "name": "@paulo-ferraz-oliveira/parse-tool-versions",
-  "private": true,
   "scripts": {
-    "build": "npm install && ncc build index.mjs --no-cache",
-    "dist": "npm run build && npm run prettier && npm run eslint && npm run markdownlint-cli && npm run yaml-lint && echo \"\nReady for submission!\"",
-    "eslint": "node_modules/.bin/eslint *.mjs src/**/*.mjs",
-    "markdownlint-cli": "node_modules/.bin/markdownlint -c .markdownlint-cli.yml .github/**/*.md .github/*.md *.md",
-    "prettier": "node_modules/.bin/prettier *.mjs src/**/*.mjs --write",
+    "build": "ncc build index.mjs --no-cache",
+    "eslint-src": "eslint src/**/*.mjs",
+    "eslint-js": "eslint eslint.config.js",
+    "eslint-index": "eslint index.mjs",
+    "eslint": "npm run eslint-src && npm run eslint-js && npm run estlint-index",
+    "prettier-src": "prettier src/**/*.mjs --write",
+    "prettier-js": "prettier eslint.config.js",
+    "prettier-index": "prettier index.mjs",
+    "prettier": "npm run prettier-src && npm run prettier-js && npm run prettier-index",
+    "format-lint": "npm run prettier && npm run eslint",
     "test": "echo \"Functional tests will be performed on GitHub via this project's workflows!\" && exit 1",
-    "yaml-lint": "node_modules/.bin/yamllint -c .yaml-lint.yml .github/**/*.yml .*.yml *.yml"
-  },
-  "version": "v1.0.3"
+    "dist": "npm install && npm build && npm run format-lint && echo \"\nReady for submission!\""
+  }
 }
