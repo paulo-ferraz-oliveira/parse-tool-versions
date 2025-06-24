@@ -6,10 +6,6 @@
     ":pinDevDependencies",
     ":pinDigestsDisabled"
   ],
-  "postUpgradeTasks": {
-    "commands": ["npm run dist"],
-    "executionMode": "update"
-  },
   "packageRules": [
     {
       "matchFileNames": [".github/**/*.yml", ".tool-versions"],
