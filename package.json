@@ -6,7 +6,7 @@
   "main": "index.mjs",
   "devDependencies": {
     "@actions/core": "3.0.0",
-    "eslint": "10.0.2",
+    "eslint": "10.0.3",
     "markdownlint-cli": "0.48.0",
     "prettier": "3.8.1",
     "@vercel/ncc": "0.38.4",
