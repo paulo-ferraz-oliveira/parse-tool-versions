@@ -9,4 +9,4 @@ description: >
 name: "@paulo-ferraz-oliveira/parse-tool-versions"
 runs:
   main: dist/index.mjs
-  using: node20
+  using: node24
