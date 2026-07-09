@@ -8,7 +8,7 @@
     "@actions/core": "3.0.1",
     "eslint": "10.6.0",
     "markdownlint-cli": "0.49.0",
-    "prettier": "3.9.4",
+    "prettier": "3.9.5",
     "@vercel/ncc": "0.44.1",
     "yaml-lint": "1.7.0"
   },
